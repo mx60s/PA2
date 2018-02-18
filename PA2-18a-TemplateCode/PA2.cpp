@@ -1,8 +1,8 @@
 /*
-	name
-	section
-	assignment
-	file
+	Maggie von Ebers, Jack Friedberg, Reuben Tadpatri
+	CSCE 221-505
+	Programming Assignment 2
+	PA2.cpp
 */
 
 
@@ -13,6 +13,7 @@
 #include "sort.h"
 
 std::vector<Flight> readFlights(std::string fileName);
+void printFlights(std::vector<Flight> flights);
 
 int main()
 {
@@ -23,6 +24,20 @@ int main()
     descen1000.csv	ascen1000.csv	rand1000.csv
     descen10000.csv ascen10000.csv	rand10000.csv
   */
+
+  std::ifstream in("descen10.csv");
+  std::string file;
+  std::string temp;
+  //while(in.get(temp)){
+    //file += temp;
+    //std::cout << file;
+  //}
+
+  //std::cout << file << std::endl;
+
+  //std::vector<Flight> flights = readFlights(file);
+  //std::cout << flights.at(0).destination << std::endl;
+  //printFlights(flights);
 
   /*
     then use each of the sorting functions on each of the generated vectors
@@ -58,9 +73,29 @@ int main()
 }
 
 //read in the flights from the input file at fileName and store them in a vector
-std::vector<Flight> readFlights(std::string fileName)
-{
+std::vector<Flight> readFlights(std::string fileName){
   std::vector<Flight> flights;
+  fileName.erase(0,fileName.find('\n'));
+  while(!fileName.empty()){
+    Flight temp;
+    temp.flightNum = fileName.substr(0,fileName.find(',')-1);
+    fileName.erase(0,fileName.find(','));
+    temp.destination = fileName.substr(0,fileName.find(',')-1);
+    fileName.erase(0,fileName.find(','));
+    temp.departureTime = fileName.substr(0,fileName.find(',')-1);
+    fileName.erase(0,fileName.find(','));
+    temp.gateNum = fileName.substr(0,1);
+    fileName.erase(0,1);
+    flights.push_back(temp);
+  }
   return flights;
 }
 
+void printFlights(std::vector<Flight> flights){
+  for(int i = 0; i < flights.size(); i++){
+    printf("%s%5s%5s%5s\n", flights.at(i).flightNum.c_str(), 
+                            flights.at(i).destination.c_str(), 
+                            flights.at(i).departureTime.c_str(),
+                            flights.at(i).gateNum.c_str());
+  }
+};
