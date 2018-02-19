@@ -87,26 +87,28 @@ int main()
 std::vector<Flight> readFlights(std::string file){
   std::vector<Flight> flights;
   std::ifstream inFile(file.c_str());
-  std::string dummy;
+  std::string dummy;  
   getline(inFile, dummy);
   while(!inFile.eof()) {
     Flight temp;
-    std::string line;
-    getline(inFile, line);
-    temp.flightNum = line.substr(0,line.find(',')-1);
-    line.erase(0,line.find(',') + 1);
-    temp.destination = line.substr(0,line.find(',')-1);
-    line.erase(0,line.find(',') + 1);
-    temp.departureTime = line.substr(0,line.find(',')-1);
-    line.erase(0,line.find(',') + 1);
-    temp.gateNum = line.substr(0,line.find(',')-1);
-    line.erase(0,line.find(',') + 1);
+    std::string str;
+
+    getline(inFile, str, ',');
+    temp.flightNum = str;
+    getline(inFile, str, ',');
+    temp.destination = str;
+    getline(inFile, str, ',');
+    temp.departureTime = str;
+    getline(inFile, str, '\n');
+    temp.gateNum = str;
+
     flights.push_back(temp);
   }
   return flights;
 }
 
 void printFlights(std::vector<Flight> flights){
+  std::cout << flights.size() << std::endl;
   for(int i = 0; i < flights.size(); i++){
     printf("%7s %20s %7s %7s \n", flights.at(i).flightNum.c_str(), 
                                   flights.at(i).destination.c_str(), 
