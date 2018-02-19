@@ -9,6 +9,7 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
 
 #include "sort.h"
 
@@ -25,9 +26,19 @@ int main()
     descen10000.csv ascen10000.csv	rand10000.csv
   */
 
+
+  /*
   std::ifstream in("descen10.csv");
   std::string file;
   std::string temp;
+  */
+
+  std::string fileName = "descen10.csv";
+  std::vector<Flight> flights  = readFlights(fileName);
+  printFlights(flights);
+
+
+
   //while(in.get(temp)){
     //file += temp;
     //std::cout << file;
@@ -73,19 +84,23 @@ int main()
 }
 
 //read in the flights from the input file at fileName and store them in a vector
-std::vector<Flight> readFlights(std::string fileName){
+std::vector<Flight> readFlights(std::string file){
   std::vector<Flight> flights;
-  fileName.erase(0,fileName.find('\n'));
-  while(!fileName.empty()){
+  std::ifstream inFile(file.c_str());
+  std::string dummy;
+  getline(inFile, dummy);
+  while(!inFile.eof()) {
     Flight temp;
-    temp.flightNum = fileName.substr(0,fileName.find(',')-1);
-    fileName.erase(0,fileName.find(','));
-    temp.destination = fileName.substr(0,fileName.find(',')-1);
-    fileName.erase(0,fileName.find(','));
-    temp.departureTime = fileName.substr(0,fileName.find(',')-1);
-    fileName.erase(0,fileName.find(','));
-    temp.gateNum = fileName.substr(0,1);
-    fileName.erase(0,1);
+    std::string line;
+    getline(inFile, line);
+    temp.flightNum = line.substr(0,line.find(',')-1);
+    line.erase(0,line.find(',') + 1);
+    temp.destination = line.substr(0,line.find(',')-1);
+    line.erase(0,line.find(',') + 1);
+    temp.departureTime = line.substr(0,line.find(',')-1);
+    line.erase(0,line.find(',') + 1);
+    temp.gateNum = line.substr(0,line.find(',')-1);
+    line.erase(0,line.find(',') + 1);
     flights.push_back(temp);
   }
   return flights;
@@ -93,9 +108,9 @@ std::vector<Flight> readFlights(std::string fileName){
 
 void printFlights(std::vector<Flight> flights){
   for(int i = 0; i < flights.size(); i++){
-    printf("%s%5s%5s%5s\n", flights.at(i).flightNum.c_str(), 
-                            flights.at(i).destination.c_str(), 
-                            flights.at(i).departureTime.c_str(),
-                            flights.at(i).gateNum.c_str());
+    printf("%7s %20s %7s %7s \n", flights.at(i).flightNum.c_str(), 
+                                  flights.at(i).destination.c_str(), 
+                                  flights.at(i).departureTime.c_str(),
+                                  flights.at(i).gateNum.c_str());
   }
 };
