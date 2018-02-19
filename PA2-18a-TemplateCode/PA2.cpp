@@ -26,14 +26,18 @@ int main()
     descen10000.csv ascen10000.csv	rand10000.csv
   */
 
-  std::string fileName = "descen10.csv";
-  std::vector<Flight> flights  = readFlights(fileName);
-  printFlights(flights);
-
-
   // APPLYING SORTS
+    // Insertion sort (working)
+    std::string fileName = "rand10.csv";
+    std::vector<Flight> flights  = readFlights(fileName);
+    printFlights(flights);
+    flights = insertion_sort(flights, ByDestination);
+    std::cout << std::endl << "BY DESTINATION:" << std::endl << std::endl;
+    printFlights(flights);
+    flights = insertion_sort(flights, ByDepartureTime);
+    std::cout << std::endl << "BY TIME:" << std::endl << std::endl;
+    printFlights(flights);
 
-  // NEED TO PRINT TO FILE
 
   /*
     then fill out the rest of the questions on the instructions 
@@ -68,14 +72,36 @@ std::vector<Flight> readFlights(std::string fileName){
 }
 
 void printFlights(std::vector<Flight> flights){
-  printf("%-15s %-20s %-15s %-s\n", "Flight Number", 
-                                  "Destination", 
-                                  "Departure Time",
-                                  "Gate Number");
-  for(int i = 0; i < flights.size(); i++){
-    printf("%-15s %-20s %-15s %-s\n", flights.at(i).flightNum.c_str(), 
-                                  flights.at(i).destination.c_str(), 
-                                  flights.at(i).departureTime.c_str(),
-                                  flights.at(i).gateNum.c_str());
+  //ONLY PRINT TO TERMINAL FOR 10 OR LESS FLIGHTS
+  if (flights.size() < 12) {
+    printf("%-15s %-20s %-15s %-s\n", 
+      "Flight Number", 
+      "Destination", 
+      "Departure Time",
+      "Gate Number");
+    for(int i = 0; i < flights.size(); i++){
+      printf("%-15s %-20s %-15s %-s\n", 
+        flights.at(i).flightNum.c_str(), 
+        flights.at(i).destination.c_str(), 
+        flights.at(i).departureTime.c_str(),
+        flights.at(i).gateNum.c_str());
+    }
   }
+  //Printing to file
+  FILE * outFile;
+  outFile = fopen("Sorted.txt", "w");
+  fprintf(outFile, "%-15s %-20s %-15s %-s\n", 
+    "Flight Number", 
+    "Destination", 
+    "Departure Time",
+    "Gate Number");
+  for(int i = 0; i < flights.size(); i++){
+    fprintf(outFile, "%-15s %-20s %-15s %-s\n", 
+      flights.at(i).flightNum.c_str(), 
+      flights.at(i).destination.c_str(), 
+      flights.at(i).departureTime.c_str(),
+      flights.at(i).gateNum.c_str());
+  }
+  fclose(outFile);
+  return;
 };

@@ -17,9 +17,30 @@ std::vector<Flight> selection_sort(std::vector<Flight> flights,
   return flights;
 }
 
-std::vector<Flight> insertion_sort(std::vector<Flight> flights,
-				   SortOption sortOpt)
-{
+std::vector<Flight> insertion_sort(std::vector<Flight> flights, SortOption sortOpt) {
+
+  if (sortOpt == ByDestination) {
+    for (int i = 0; i < flights.size(); i++) {
+        Flight tracker = flights.at(i);
+        int j = i-1;
+        while (j>= 0 && compareToDestination(flights.at(j), tracker)) {
+            flights.at(j+1) = flights.at(j);
+            j = j - 1;
+        }
+        flights.at(j+1) = tracker;
+    }
+  }
+  else if (sortOpt = ByDepartureTime) {
+    for (int i = 0; i < flights.size(); i++) {
+        Flight tracker = flights.at(i);
+        int j = i-1;
+        while (j>= 0 && compareToDepartureTime(flights.at(j), tracker)) {
+            flights.at(j+1) = flights.at(j);
+            j = j - 1;
+        }
+        flights.at(j+1) = tracker;
+    }
+  }
   return flights;
 }
 
