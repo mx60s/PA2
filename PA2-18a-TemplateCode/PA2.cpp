@@ -31,9 +31,13 @@ int main()
     std::string fileName = "rand10.csv";
     std::vector<Flight> flights  = readFlights(fileName);
     printFlights(flights);
+
     flights = insertion_sort(flights, ByDestination);
     std::cout << std::endl << "BY DESTINATION:" << std::endl << std::endl;
     printFlights(flights);
+
+    flights  = readFlights(fileName);
+        
     flights = insertion_sort(flights, ByDepartureTime);
     std::cout << std::endl << "BY TIME:" << std::endl << std::endl;
     printFlights(flights);
