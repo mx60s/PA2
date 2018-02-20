@@ -30,15 +30,25 @@ int main()
     // Insertion sort (working)
     std::string fileName = "rand10.csv";
     std::vector<Flight> flights  = readFlights(fileName);
+
     printFlights(flights);
-    flights = insertion_sort(flights, ByDestination);
+    //flights = insertion_sort(flights, ByDestination);
+    //std::cout << "-------------------Insertion Sort-------------------" << std::endl;
+    //std::cout << std::endl << "BY DESTINATION:" << std::endl << std::endl;
+    //printFlights(flights);
+    //flights = insertion_sort(flights, ByDepartureTime);
+    //std::cout << std::endl << "BY TIME:" << std::endl << std::endl;
+    //printFlights(flights);
+
+    std::cout << std::endl;
+    std::cout << "-------------------Bubble Sort-------------------" << std::endl;
+
+    flights = bubble_sort(flights, ByDestination);
     std::cout << std::endl << "BY DESTINATION:" << std::endl << std::endl;
     printFlights(flights);
-    flights = insertion_sort(flights, ByDepartureTime);
+    flights = bubble_sort(flights, ByDepartureTime);
     std::cout << std::endl << "BY TIME:" << std::endl << std::endl;
     printFlights(flights);
-
-
   /*
     then fill out the rest of the questions on the instructions 
     - the number of comparisons

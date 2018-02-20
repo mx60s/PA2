@@ -30,7 +30,7 @@ std::vector<Flight> insertion_sort(std::vector<Flight> flights, SortOption sortO
         flights.at(j+1) = tracker;
     }
   }
-  else if (sortOpt = ByDepartureTime) {
+  else if (sortOpt == ByDepartureTime) {
     for (int i = 0; i < flights.size(); i++) {
         Flight tracker = flights.at(i);
         int j = i-1;
@@ -47,31 +47,31 @@ std::vector<Flight> insertion_sort(std::vector<Flight> flights, SortOption sortO
 std::vector<Flight> bubble_sort(std::vector<Flight> flights,
 				SortOption sortOpt)
 {
-  int swaps = 1;
+  bool swaps = true;
   Flight temp;
     if(sortOpt == ByDestination){
-      while(swaps != 0){
-        for(int j = 0; j < flights.size();j++){ //inner loop, don't do i+1 to go out of bounds
-          swaps = 0;
-          if(compareToDestination(flights.at(j),flights.at(j+1))){ //swap
-            swaps++;
-            temp = flights.at(j);
-            flights.at(j) = flights.at(j+1);
-            flights.at(j+1) = temp;
+      while(swaps){
+        swaps = false;
+        for(int j = 1; j < flights.size();j++){ //inner loop, don't do i+1 to go out of bounds
+          if(compareToDestination(flights.at(j-1),flights.at(j))){
+            swaps = true;
+            temp = flights.at(j-1);
+            flights.at(j-1) = flights.at(j);
+            flights.at(j) = temp;
           }
         } //end inner loop
       } //end outer loop
     }
 
-    if(sortOpt == ByDepartureTime){
-      while(swaps != 0){
-        for(int j = 0; j < flights.size();j++){ //inner loop, don't do i+1 to go out of bounds
-          swaps = 0;
-          if(compareToDepartureTime(flights.at(j),flights.at(j+1))){ //swap
-            swaps++;
-            temp = flights.at(j);
-            flights.at(j) = flights.at(j+1);
-            flights.at(j+1) = temp;
+    else if(sortOpt == ByDepartureTime){
+      while(swaps){
+        swaps = false;
+        for(int j = 1; j < flights.size();j++){ //inner loop, don't do i+1 to go out of bounds
+          if(compareToDepartureTime(flights.at(j-1),flights.at(j))){
+            swaps = true;
+            temp = flights.at(j-1);
+            flights.at(j-1) = flights.at(j);
+            flights.at(j) = temp;
           }
         } //end inner loop
       } //end outer loop
