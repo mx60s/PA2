@@ -28,7 +28,7 @@ int main()
 
   // APPLYING SORTS
     // Insertion sort (working)
-    std::string fileName = "rand100.csv";
+    std::string fileName = "ascen10.csv";
     std::vector<Flight> flights  = readFlights(fileName);
     std::cout << std::endl << "Original:" << std::endl << std::endl;
     printFlights(flights);
@@ -65,15 +65,17 @@ int main()
     //Selection sort
     std::cout << std::endl;
     std::cout << "--------------------Selection Sort----------------------" << std::endl;
-    //flights = selection_sort(flights, ByDestination);
-    //std::cout << std::endl << "BY DESTINATION:" << std::endl << std::endl;
-    //printFlights(flights);
+    std::cout << std::endl << "BY DESTINATION:" << std::endl;
+    flights = selection_sort(flights, ByDestination);
+    std::cout << std::endl;
+    printFlights(flights);
 
-    //flights  = readFlights(fileName);
+    flights  = readFlights(fileName); //reset
         
-    //flights = selection_sort(flights, ByDepartureTime);
-    //std::cout << std::endl << "BY TIME:" << std::endl << std::endl;
-    //printFlights(flights);
+    std::cout << std::endl << "BY TIME:" << std::endl;
+    flights = selection_sort(flights, ByDepartureTime);
+    std::cout << std::endl;
+    printFlights(flights);
 
   /*
     then fill out the rest of the questions on the instructions 

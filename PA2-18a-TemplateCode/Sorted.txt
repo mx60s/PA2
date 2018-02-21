@@ -1,100 +1,12 @@
 Flight Number   Destination          Departure Time  Gate Number
-KL806           Alderson             01:49           J5
-BM423           Artondale            22:08           D1
-VO407           Attalla              05:44           R8
-HV994           Auvergne             08:45           S4
-BE230           Avery                19:53           T4
-PS944           Avon Park            04:43           X9
-LD274           Batesville           19:05           N3
-UZ064           Belwood              02:22           I5
-OZ728           Big Stone City       22:27           M4
-DQ687           Bridge               10:57           M9
-EN575           Brillion             02:11           P5
-CC148           Buechel              09:25           V4
-RM916           Buffalo City         16:46           E6
-CF895           Cahaba Heights       15:57           C1
-RI011           Carlile              19:51           Y3
-LP339           Castella             21:02           E8
-AG213           Center Ossipee       18:42           K1
-BL802           Cobre                20:55           I8
-HZ962           Coffey               11:50           N7
-AT253           Colonie              18:53           S4
-PF512           Cotulla              17:07           D1
-VJ208           Crowders             23:48           J0
-CA851           De Forest            16:39           H5
-SW474           Deerton              09:46           O5
-HE001           Discovery Bay        08:20           M9
-DN802           Fabens               07:31           Q4
-OR933           Fallis               12:29           N8
-CH316           Felida               18:17           N7
-NK951           Frostproof           07:40           N7
-KA561           Gagetown             18:26           Q6
-ET998           Glasco               12:39           B2
-MF279           Glen Allan           01:02           C0
-GL259           Glenolden            20:28           K9
-SN310           Guymon               13:11           L3
-RT008           Hanley Falls         10:44           B6
-XL514           Harveys Lake         02:13           K5
-IB762           Hazardville          15:04           X9
-ZI910           Heaton               13:40           W2
-LA413           Hornbeak             13:28           R9
-ZL788           Ingot                21:27           N1
-UZ491           Jerryville           08:36           I8
-VA218           Juntura              13:42           K4
-ML526           Keener               14:07           N0
-UO124           Kelly                06:16           H5
-SG619           Kensington Park      18:23           L3
-IT541           Keyport              00:14           G9
-AQ803           Lafitte              04:21           X9
-LF900           Layton               14:25           B5
-VS770           Lexington Heights    17:42           P2
-JJ869           Liberty Hill         07:30           P0
-ZY701           Linda                03:10           G5
-DD749           Loysville            20:01           C6
-BN712           Mallory              14:12           Z0
-ZC261           Manassas             09:20           X2
-GN914           Mandeville           23:52           B9
-ND771           Marathon Shores      13:47           L8
-UM653           Mardela Springs      14:59           E2
-ZJ854           Marmarth             00:35           I4
-JG706           Marvin               15:00           I4
-JY726           Metaline             00:30           R5
-DV799           Minersville          08:04           X7
-TF261           Mineville            18:11           Q8
-PB756           Mossville            11:37           Y5
-PJ984           Mount Gilead         16:55           K2
-UU752           Mount Nebo           10:23           Q1
-IJ914           Mountain View        11:35           N8
-PU044           Mountville           20:07           B1
-KV401           Mulberry             00:22           P9
-RV199           Nelagoney            05:43           T5
-OY684           New Whiteland        15:04           S5
-EX810           North New Hyde Park  19:46           G5
-UB779           Nushagak             16:10           D5
-CQ055           Oak Park Heights     22:09           D8
-LZ018           Orange City          07:42           D6
-UY619           Patetown             09:53           P8
-NQ331           Piney Woods          03:44           K6
-WE066           Poplar Branch        00:16           W0
-OT869           Powhatan Point       00:08           X6
-QI253           Rand                 04:38           Z6
-MR020           Rayburn              21:01           P9
-AB848           Richardson           12:25           G8
-PD806           Ringold              06:51           I1
-BU139           Rio Grande           18:19           N7
-WN962           Santa Ynez           05:40           U0
-TF837           Sarasota Springs     06:49           K1
-AP962           Sharon               00:07           R6
-CD536           Simnasho             15:45           Q1
-QV653           Sinking Spring       18:43           T3
-XO738           Smithwick            14:24           N0
-HQ084           South Zanesville     19:17           C3
-XN603           Sun City Center      21:24           O3
-XN440           Thalia               21:11           C5
-OY678           Tuolumne             15:38           B1
-NU901           Wakenda              00:42           A8
-PG008           Willow Creek         18:10           W3
-FQ164           Winkelman            15:35           G7
-VM411           Woodworth            07:09           G2
-CN646           Zenith               16:40           G3
-WC478           Zilwaukee            03:03           P7
+                                                     
+GB730           Abbeville            00:00           V1
+GL220           Abbotsford           02:23           D3
+CJ227           Abbott               04:47           U2
+AB036           Abbottsburg          07:11           A1
+AG739           Abbottstown          09:35           W1
+HD243           Abbyville            11:59           R0
+SR755           Abell                14:23           C1
+UP401           Abercrombie          16:47           E2
+XT369           Aberdeen             19:11           P8
+BC298           Aberfoil             21:35           Z4

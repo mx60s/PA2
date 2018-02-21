@@ -20,10 +20,10 @@ Flight::~Flight()
 
 bool compareToDestination(Flight f1, Flight f2)
 {
-  return (f1.destination >= f2.destination);
+  return (f1.destination > f2.destination);
 }
 
 bool compareToDepartureTime(Flight f1, Flight f2)
 {
-  return (f1.departureTime >= f2.departureTime);
+  return (f1.departureTime > f2.departureTime);
 }

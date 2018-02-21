@@ -24,11 +24,11 @@ std::vector<Flight> selection_sort(std::vector<Flight> flights,
 			int index = k;
 			Flight tracker = flights.at(k);
 			for (int i = k + 1; i < flights.size(); i++) {
-				if (compareToDepartureTime(flights.at(i), flights.at(index))) {
+				if (flights.at(index).departureTime >= flights.at(i).departureTime) {
 					index = i;
 				}
 			}
-			if (compareToDepartureTime(tracker, flights.at(k))) {
+			if (tracker.departureTime >= flights.at(k).departureTime) {
 				flights.at(k) = flights.at(index);
 				flights.at(index) = tracker;
 			}
@@ -39,7 +39,7 @@ std::vector<Flight> selection_sort(std::vector<Flight> flights,
 			int index = k;
 			Flight tracker = flights.at(k);
 			for (int i = k + 1; i < flights.size(); i++) {
-				if (compareToDestination(flights.at(i), flights.at(index))) {
+				if (compareToDestination(flights.at(index), flights.at(i))) {
 					index = i;
 				}
 			}
@@ -49,6 +49,7 @@ std::vector<Flight> selection_sort(std::vector<Flight> flights,
 			}
 		}
 	}
+  std::cout << "Number of comparisons used: " << num_cmps << std::endl;
 	return flights;
 }
 
@@ -99,12 +100,14 @@ std::vector<Flight> bubble_sort(std::vector<Flight> flights,
         for(int j = 1; j < flights.size();j++){ //inner loop, don't do i+1 to go out of bounds
           num_cmps++;
           if(compareToDestination(flights.at(j-1),flights.at(j))){
+            //std::cout << j << " Swap " << flights.at(j-1).destination << " and " << flights.at(j).destination << std::endl;
             num_cmps++;
             swaps = true;
             temp = flights.at(j-1);
             flights.at(j-1) = flights.at(j);
             flights.at(j) = temp;
           }
+          //std::cout << flights.at(j-1).destination << std::endl;
         } //end inner loop
       } //end outer loop
     }
@@ -113,21 +116,20 @@ std::vector<Flight> bubble_sort(std::vector<Flight> flights,
       while(swaps){
         num_cmps++;
         swaps = false;
-        for(int j = 1; j < flights.size();j++){ //inner loop, don't do i+1 to go out of bounds
+        for(int j = 0; j < flights.size()-1;j++){ //inner loop, don't do i+1 to go out of bounds
           num_cmps++;
-          std::cout << j << std::endl;
-          if(compareToDepartureTime(flights.at(j-1),flights.at(j))){
-            std::cout << "swapped" << std::endl;
+          if(compareToDepartureTime(flights.at(j),flights.at(j+1))){
+            //std::cout << j << " swap " << flights.at(j).departureTime << " and " << flights.at(j+1).departureTime << std::endl;
             num_cmps++;
             swaps = true;
-            temp = flights.at(j-1);
-            flights.at(j-1) = flights.at(j);
-            flights.at(j) = temp;
+            temp = flights.at(j);
+            flights.at(j) = flights.at(j+1);
+            flights.at(j+1) = temp;
           }
         } //end inner loop
       } //end outer loop
     }
-    flights.erase (flights.begin()+0);
+    //flights.erase (flights.begin()+0);
     std::cout << "Number of comparisons used: " << num_cmps << std::endl;
     return flights;
 }
