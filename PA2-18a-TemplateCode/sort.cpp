@@ -14,7 +14,10 @@ int num_cmps;
 std::vector<Flight> selection_sort(std::vector<Flight> flights,
 				   SortOption sortOpt)
 {
-  return flights;
+	if (sortOpt == ByDepartureTime) {		for (int k = 0; k < flights.size() - 1; k++) {			int index = k;			Flight tracker = flights.at(k);			for (int i = k + 1; i < flights.size(); i++) {				if (compareToDepartureTime(flights.at(i), flights.at(index))) {					index = i;				}			}			if (compareToDepartureTime(tracker, flights.at(k))) {				flights.at(k) = flights.at(index);				flights.at(index) = tracker;			}		}	}
+
+	else if (sortOpt == ByDestination) {		for (int k = 0; k < flights.size() - 1; k++) {			int index = k;			Flight tracker = flights.at(k);			for (int i = k + 1; i < flights.size(); i++) {				if (compareToDestination(flights.at(i), flights.at(index))) {					index = i;				}			}			if (compareToDestination(tracker, flights.at(k))) {				flights.at(k) = flights.at(index);				flights.at(index) = tracker;			}		}	}
+	return flights;
 }
 
 std::vector<Flight> insertion_sort(std::vector<Flight> flights, SortOption sortOpt) {
@@ -24,7 +27,6 @@ std::vector<Flight> insertion_sort(std::vector<Flight> flights, SortOption sortO
         Flight tracker = flights.at(i);
         int j = i-1;
         while (j>= 0 && compareToDestination(flights.at(j), tracker)) {
-            num_cmps++;
             flights.at(j+1) = flights.at(j);
             j = j - 1;
         }
@@ -36,14 +38,12 @@ std::vector<Flight> insertion_sort(std::vector<Flight> flights, SortOption sortO
         Flight tracker = flights.at(i);
         int j = i-1;
         while (j>= 0 && compareToDepartureTime(flights.at(j), tracker)) {
-            num_cmps++;
             flights.at(j+1) = flights.at(j);
             j = j - 1;
         }
         flights.at(j+1) = tracker;
     }
   }
-  flights.erase (flights.begin()+0);
   return flights;
 }
 
