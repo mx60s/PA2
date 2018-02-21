@@ -21,11 +21,14 @@ std::vector<Flight> selection_sort(std::vector<Flight> flights,
 			int min = k;
 			Flight tracker = flights.at(k);
 			for (int i = k + 1; i < flights.size(); i++) {
+				num_cmps++;
 				if (!compareToDepartureTime(flights.at(i), flights.at(min))) {
+					num_cmps++;
 					min = i;
 				}
 			}
 			if (compareToDepartureTime(flights.at(k), flights.at(min))) {
+				num_cmps++;
 				flights.at(k) = flights.at(min);
 				flights.at(min) = tracker;
 			}
@@ -36,17 +39,23 @@ std::vector<Flight> selection_sort(std::vector<Flight> flights,
 			int min = k;
 			Flight tracker = flights.at(k);
 			for (int i = k + 1; i < flights.size(); i++) {
+				num_cmps++;
 				if (!compareToDestination(flights.at(i), flights.at(min))) {
+					num_cmps++;
 					min = i;
 				}
 			}
 			if (compareToDestination(flights.at(k), flights.at(min))) {
+				num_cmps++;
 				flights.at(k) = flights.at(min);
 				flights.at(min) = tracker;
 			}
 		}
 	}
+
+	std::cout << "Number of comparisons used: " << num_cmps << std::endl;
 	return flights;
+
 }
 
 std::vector<Flight> insertion_sort(std::vector<Flight> flights, SortOption sortOpt) {
@@ -56,6 +65,7 @@ std::vector<Flight> insertion_sort(std::vector<Flight> flights, SortOption sortO
 			Flight tracker = flights.at(i);
 			int j = i - 1;
 			while (j >= 0 && compareToDestination(flights.at(j), tracker)) {
+				num_cmps++;
 				flights.at(j + 1) = flights.at(j);
 				j = j - 1;
 			}
@@ -67,12 +77,14 @@ std::vector<Flight> insertion_sort(std::vector<Flight> flights, SortOption sortO
 			Flight tracker = flights.at(i);
 			int j = i - 1;
 			while (j >= 0 && compareToDepartureTime(flights.at(j), tracker)) {
+				num_cmps++;
 				flights.at(j + 1) = flights.at(j);
 				j = j - 1;
 			}
 			flights.at(j + 1) = tracker;
 		}
 	}
+	std::cout << "Number of comparisons used: " << num_cmps << std::endl;
 	return flights;
 }
 
@@ -84,7 +96,6 @@ std::vector<Flight> bubble_sort(std::vector<Flight> flights,
 	Flight temp;
 	if (sortOpt == ByDestination) {
 		while (swaps) {
-			num_cmps++;
 			swaps = false;
 			for (int j = 1; j < flights.size(); j++) { //inner loop, don't do i+1 to go out of bounds
 				num_cmps++;
@@ -103,7 +114,6 @@ std::vector<Flight> bubble_sort(std::vector<Flight> flights,
 
 	else if (sortOpt == ByDepartureTime) {
 		while (swaps) {
-			num_cmps++;
 			swaps = false;
 			for (int j = 0; j < flights.size() - 1; j++) { //inner loop, don't do i+1 to go out of bounds
 				num_cmps++;
