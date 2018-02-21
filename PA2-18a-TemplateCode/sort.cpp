@@ -27,6 +27,7 @@ std::vector<Flight> insertion_sort(std::vector<Flight> flights, SortOption sortO
         Flight tracker = flights.at(i);
         int j = i-1;
         while (j>= 0 && compareToDestination(flights.at(j), tracker)) {
+            num_cmps++;
             flights.at(j+1) = flights.at(j);
             j = j - 1;
         }
@@ -38,12 +39,14 @@ std::vector<Flight> insertion_sort(std::vector<Flight> flights, SortOption sortO
         Flight tracker = flights.at(i);
         int j = i-1;
         while (j>= 0 && compareToDepartureTime(flights.at(j), tracker)) {
+            num_cmps++;
             flights.at(j+1) = flights.at(j);
             j = j - 1;
         }
         flights.at(j+1) = tracker;
     }
   }
+  flights.erase (flights.begin()+0);
   return flights;
 }
 
