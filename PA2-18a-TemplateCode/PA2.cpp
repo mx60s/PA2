@@ -28,20 +28,52 @@ int main()
 
   // APPLYING SORTS
     // Insertion sort (working)
-    std::string fileName = "rand10.csv";
+    std::string fileName = "rand100.csv";
     std::vector<Flight> flights  = readFlights(fileName);
+    std::cout << std::endl << "Original:" << std::endl << std::endl;
     printFlights(flights);
 
+    std::cout << std::endl;
+    std::cout << "-------------------Insertion Sort---------------------" << std::endl;
+    std::cout << std::endl << "BY DESTINATION:" << std::endl;
     flights = insertion_sort(flights, ByDestination);
-    std::cout << std::endl << "BY DESTINATION:" << std::endl << std::endl;
+    std::cout << std::endl;
     printFlights(flights);
 
-    flights  = readFlights(fileName);
+    flights  = readFlights(fileName); // reset
         
+    std::cout << std::endl << "BY TIME:" << std::endl;
     flights = insertion_sort(flights, ByDepartureTime);
-    std::cout << std::endl << "BY TIME:" << std::endl << std::endl;
+    std::cout << std::endl;
     printFlights(flights);
 
+    // Bubble sort (working)
+    std::cout << std::endl;
+    std::cout << "---------------------Bubble Sort-----------------------" << std::endl;
+    std::cout << std::endl << "BY DESTINATION:" << std::endl;
+    flights = bubble_sort(flights, ByDestination);
+    std::cout << std::endl;
+    printFlights(flights);
+
+    flights  = readFlights(fileName); // reset
+        
+    std::cout << std::endl << "BY TIME:" << std::endl;
+    flights = bubble_sort(flights, ByDepartureTime);
+    std::cout << std::endl;
+    printFlights(flights);
+
+    //Selection sort
+    std::cout << std::endl;
+    std::cout << "--------------------Selection Sort----------------------" << std::endl;
+    //flights = selection_sort(flights, ByDestination);
+    //std::cout << std::endl << "BY DESTINATION:" << std::endl << std::endl;
+    //printFlights(flights);
+
+    //flights  = readFlights(fileName);
+        
+    //flights = selection_sort(flights, ByDepartureTime);
+    //std::cout << std::endl << "BY TIME:" << std::endl << std::endl;
+    //printFlights(flights);
 
   /*
     then fill out the rest of the questions on the instructions 
@@ -49,6 +81,9 @@ int main()
     - to test your functions experimentally use difftime explained here 
     http://www.cplusplus.com/reference/ctime/time/
   */
+
+
+
   return 0;
 }
 
